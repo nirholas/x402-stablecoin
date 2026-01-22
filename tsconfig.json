@@ -17,24 +17,14 @@
     "paths": {
       "@x402/sdk": ["./packages/sdk/src"],
       "@x402/core": ["./x402"]
-    }
+    },
+    "types": ["node"]
   },
-  "include": [
-    "./*.ts"
-  ],
+  "files": [],
   "exclude": [
     "node_modules",
     "dist",
     "**/node_modules",
-    "**/dist",
-    "cli",
-    "contracts",
-    "examples",
-    "facilitator",
-    "packages",
-    "sperax",
-    "web-app",
-    "x402",
-    "yield-tracker"
+    "**/dist"
   ]
 }

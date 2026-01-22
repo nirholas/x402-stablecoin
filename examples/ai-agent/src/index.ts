@@ -6,7 +6,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk';
-import type { MessageParam, ContentBlock, TextBlock } from '@anthropic-ai/sdk/resources/messages';
+import type { MessageParam, ContentBlock, TextBlock, Message } from '@anthropic-ai/sdk/resources/messages';
 
 // ============================================
 // Tool Type Definitions for v0.20.x SDK
@@ -179,16 +179,16 @@ async function runAgent() {
     },
   ];
 
-  let response = await client.messages.create({
+  let response: Message = await client.messages.create({
     model: 'claude-sonnet-4-20250514',
     max_tokens: 4096,
     messages,
-  } as Parameters<typeof client.messages.create>[0]);
+  }) as Message;
 
   // Agent loop - handle tool calls
   while ((response.stop_reason as string) === 'tool_use') {
     const toolUse = response.content.find(
-      (block): block is ToolUseBlock => (block as ToolUseBlock).type === 'tool_use'
+      (block: ContentBlock): block is ToolUseBlock => (block as ToolUseBlock).type === 'tool_use'
     ) as ToolUseBlock | undefined;
 
     if (!toolUse) break;
@@ -216,12 +216,12 @@ async function runAgent() {
       model: 'claude-sonnet-4-20250514',
       max_tokens: 4096,
       messages,
-    } as Parameters<typeof client.messages.create>[0]);
+    }) as Message;
   }
 
   // Print final response
   const textBlock = response.content.find(
-    (block): block is TextBlock => block.type === 'text'
+    (block: ContentBlock): block is TextBlock => block.type === 'text'
   );
 
   console.log('\n📋 Agent Report:\n');
