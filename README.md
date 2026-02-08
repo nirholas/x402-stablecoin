@@ -11,7 +11,7 @@
 X402 is a complete payment protocol implementation for AI agents, combining:
 
 - **[HTTP 402](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/402)** - Payment Required standard for programmatic payments
-- **[Sperax USDs](https://sperax.io/)** - Auto-yield stablecoin (8-25% APY) on Arbitrum
+- **[Sperax USDs](https://sperax.io/)** - Auto-yield stablecoin (8-25% APY) on Arbitrum 
 - **[EIP-3009](https://eips.ethereum.org/EIPS/eip-3009)** - Gasless transfer authorization
 - **[Arbitrum L2](https://arbitrum.io/)** - Low-cost, fast transactions
 
